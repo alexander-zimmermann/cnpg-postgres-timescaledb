@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":timezone(Europe/Berlin)",
+  ],
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
+  "labels": ["renovate"],
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true,
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
+      "groupName": "cnpg postgres base image",
+    },
+    {
+      "matchManagers": ["pre-commit"],
+      "groupName": "pre-commit",
+    },
+  ],
+  "pre-commit": {
+    "enabled": true,
+  },
+}

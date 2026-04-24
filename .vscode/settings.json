@@ -1,0 +1,27 @@
+{
+  // --- Editor Behavior ---
+  "editor.rulers": [100],
+
+  // --- File Associations ---
+  "files.associations": {
+    "Dockerfile*": "dockerfile",
+    ".renovaterc.json5": "jsonc"
+  },
+
+  // --- YAML: GitHub Actions schema hint ---
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": [
+      ".github/workflows/*.yaml",
+      ".github/workflows/*.yml"
+    ]
+  },
+
+  // --- Material Icon Theme - Color Saturation ---
+  "material-icon-theme.saturation": 0.5,
+
+  // --- Material Icon Theme - Default Folder Color ---
+  "material-icon-theme.folders.color": "#42a5f5",
+
+  // --- Material Icon Theme - Folder Mapping ---
+  "material-icon-theme.folders.associations": {}
+}
