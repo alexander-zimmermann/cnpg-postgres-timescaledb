@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.23
 ARG PG_MAJOR=16
-FROM ghcr.io/cloudnative-pg/postgresql:16.1
+FROM ghcr.io/cloudnative-pg/postgresql:16.13
 
 USER root
 
