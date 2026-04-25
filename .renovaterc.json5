@@ -25,6 +25,16 @@
       "groupName": "cnpg postgres base image",
     },
     {
+      // Major bumps of the Postgres base image require coordinated changes
+      // to ARG PG_MAJOR and the timescaledb-2-postgresql-* apt pin (which
+      // Renovate has no manager for). Block majors so we don't end up with
+      // a partial bump merged; do them manually with full thinking.
+      "matchManagers": ["dockerfile"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false,
+    },
+    {
       "matchManagers": ["pre-commit"],
       "groupName": "pre-commit",
     },
