@@ -22,7 +22,7 @@ RUN apt-get update \
       > /etc/apt/sources.list.d/timescaledb.list \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
-      "timescaledb-2-postgresql-${PG_MAJOR}=2.23.*" \
+      "timescaledb-2-postgresql-${PG_MAJOR}=2.26.*" \
  && apt-get purge -y --auto-remove curl gnupg lsb-release \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
