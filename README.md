@@ -18,7 +18,7 @@ postgresql:
 
 Published to `ghcr.io/alexander-zimmermann/cnpg-postgres-timescaledb`. Built for `linux/amd64` and `linux/arm64`.
 
-Tag scheme: `<pg-version>-ts<ts-version>` (e.g. `18.3-ts2.23`). Pushed by the release workflow whenever a tag matching `*-ts*` lands on `main`. The `latest` tag tracks the most recent build from `main`.
+Tag scheme: `<pg-version>-ts<ts-version>` (e.g. `18.3-ts2.26`). Pushed by the release workflow whenever a tag matching `*-ts*` lands on `main`. The `latest` tag tracks the most recent build from `main`.
 
 The image's `ARG PG_MAJOR`, the `FROM` tag and the TimescaleDB apt pin must stay in sync — see the next section.
 
@@ -40,7 +40,7 @@ kind: Cluster
 metadata:
   name: timescaledb-db
 spec:
-  imageName: ghcr.io/alexander-zimmermann/cnpg-postgres-timescaledb:18.3-ts2.23
+  imageName: ghcr.io/alexander-zimmermann/cnpg-postgres-timescaledb:18.3-ts2.26
   instances: 1
   postgresql:
     parameters:
@@ -76,8 +76,8 @@ docker exec $(docker ps -lq) psql -U postgres -c "CREATE EXTENSION timescaledb;"
 2. Open a PR. CI runs `pre-commit` (hadolint, actionlint, gitleaks, …).
 3. After merge, tag `<pg>-ts<ts>` on `main`:
    ```sh
-   git tag -a 18.3-ts2.23 -m "Release 18.3-ts2.23: PostgreSQL 18.3 + TimescaleDB 2.23"
-   git push origin 18.3-ts2.23
+   git tag -a 18.3-ts2.26 -m "Release 18.3-ts2.26: PostgreSQL 18.3 + TimescaleDB 2.26"
+   git push origin 18.3-ts2.26
    ```
 4. The `Release` workflow builds and pushes both architecture-specific images and updates `:latest`.
 
