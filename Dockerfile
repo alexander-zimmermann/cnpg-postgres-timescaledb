@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.23
-ARG PG_MAJOR=16
+ARG PG_MAJOR=18
 FROM ghcr.io/cloudnative-pg/postgresql:18.3
 
 USER root
@@ -19,7 +19,7 @@ RUN apt-get update \
       > /etc/apt/sources.list.d/timescaledb.list \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
-      "timescaledb-2-postgresql-${PG_MAJOR}=2.17.*" \
+      "timescaledb-2-postgresql-${PG_MAJOR}=2.23.*" \
  && apt-get purge -y --auto-remove curl gnupg lsb-release \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
