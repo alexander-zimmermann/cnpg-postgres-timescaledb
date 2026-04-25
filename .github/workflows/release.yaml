@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "16.*-ts*"
+      - "*-ts*"
   workflow_dispatch:
     inputs:
       tag:
