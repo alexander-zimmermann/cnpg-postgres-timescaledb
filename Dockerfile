@@ -1,6 +1,9 @@
 # syntax=docker/dockerfile:1.23
-ARG PG_MAJOR=18
 FROM ghcr.io/cloudnative-pg/postgresql:18.3
+
+# ARG must be inside the build stage (after FROM); a top-level ARG is
+# only available for the FROM line itself and would expand to "" in RUN.
+ARG PG_MAJOR=18
 
 USER root
 
