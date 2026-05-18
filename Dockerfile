@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.23
-FROM ghcr.io/cloudnative-pg/postgresql:18.3
+FROM ghcr.io/cloudnative-pg/postgresql:18.4
 
 # ARG must be inside the build stage (after FROM); a top-level ARG is
 # only available for the FROM line itself and would expand to "" in RUN.
