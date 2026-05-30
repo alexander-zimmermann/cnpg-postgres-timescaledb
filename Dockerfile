@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.23
+# syntax=docker/dockerfile:1.24
 FROM ghcr.io/cloudnative-pg/postgresql:18.4
 
 # ARG must be inside the build stage (after FROM); a top-level ARG is
