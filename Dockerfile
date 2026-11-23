@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1.29
-FROM ghcr.io/cloudnative-pg/postgresql:18.6
+# standard = the old system image without in-core Barman; backups run through the barman-cloud plugin
+FROM ghcr.io/cloudnative-pg/postgresql:18.7-standard-trixie
 
 # ARG must be inside the build stage (after FROM); a top-level ARG is
 # only available for the FROM line itself and would expand to "" in RUN.
@@ -9,6 +10,7 @@ USER root
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# The toolkit ships one versioned .so, so a new version needs ALTER EXTENSION timescaledb_toolkit UPDATE right after the roll
 # hadolint ignore=DL3008
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
@@ -23,7 +25,7 @@ RUN apt-get update \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
       "timescaledb-2-postgresql-${PG_MAJOR}=2.26.*" \
-      "timescaledb-toolkit-postgresql-${PG_MAJOR}" \
+      "timescaledb-toolkit-postgresql-${PG_MAJOR}=1:1.24.*" \
  && apt-get purge -y --auto-remove curl gnupg lsb-release \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
