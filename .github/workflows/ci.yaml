@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Build the image
+        run: docker build --platform linux/amd64 -t cnpg-postgres-timescaledb:ci .
+
+      - name: TimescaleDB and the toolkit are installed
+        run: |
+          docker run --rm --entrypoint bash cnpg-postgres-timescaledb:ci -c \
+            'ls /usr/share/postgresql/*/extension/timescaledb.control /usr/share/postgresql/*/extension/timescaledb_toolkit.control'
