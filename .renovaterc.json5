@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>alexander-zimmermann/.github//.renovate/sidecarBase.json5#v1.0.0"],
+  "extends": ["github>alexander-zimmermann/.github//.renovate/sidecarBase.json5#v1.0.1"],
   "packageRules": [
     {
       "matchManagers": ["dockerfile"],
